@@ -53,4 +53,4 @@ To get a local copy up and running follow these steps.
 Give a ⭐️ if you like this project!
 
 ## License :memo:
-# Released under ![MIT](license) License
+Released under [MIT](license) License
