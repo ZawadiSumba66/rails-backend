@@ -8,10 +8,18 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
     # for development
     allow do
-     origins '*'
+     origins 'http://localhost:3000'
    
      resource '*',
        headers: :any,
        methods: %i[get post put patch delete options head]
    end
+    # for production
+    allow do
+      origins 'https://fitness-tips.herokuapp.com/'
+    
+      resource '*',
+        headers: :any,
+        methods: %i[get post put patch delete options head]
+    end
  end
