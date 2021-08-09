@@ -46,7 +46,7 @@ module Api
       private
 
       def tip_params
-        params.require(:tip).permit(:title, :description, :benefits, :instructions, :image)
+        params.require(:tip).permit(:title, :description, :benefits, :instructions)
       end
     end
   end

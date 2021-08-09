@@ -10,5 +10,4 @@ class User < ApplicationRecord
   has_many :favorited_tips, through: :favorites, source: :tip
   validates :username, presence: true, uniqueness: true, length: { in: 4..20 }
   validates :email, presence: true, uniqueness: true
-  include ImageUploader::Attachment(:image)
 end
