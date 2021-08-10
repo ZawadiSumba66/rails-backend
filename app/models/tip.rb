@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Tip < ApplicationRecord
   has_many :favorites
   has_many :favoritors, through: :favorites, source: :user

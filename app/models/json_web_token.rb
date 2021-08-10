@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class JsonWebToken
   def self.encode(payload)
     JWT.encode payload, Rails.application.secret_key_base
