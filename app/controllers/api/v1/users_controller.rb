@@ -4,21 +4,21 @@ module Api
       skip_before_action :authenticate_user!
 
       def create
-        if params[:user][:email].nil?
-          render json: { message: ['User request must contain the user email.'] }, status: 400
-          return
-        elsif params[:user][:password].nil?
-          render json: { message: ['User request must contain the user password.'] }, status: 400
-          return
-        end
+        # if params[:user][:email].nil?
+        #   render json: { message: ['User request must contain the user email.'] }, status: 400
+        #   return
+        # elsif params[:user][:password].nil?
+        #   render json: { message: ['User request must contain the user password.'] }, status: 400
+        #   return
+        # end
 
-        if params[:user][:email]
-          duplicate_user = User.find_by_email(params[:user][:email])
-          unless duplicate_user.nil?
-            render json: { message: ['Duplicate email. A user already exists with that email address.'] }, status: 409
-            return
-          end
-        end
+        # if params[:user][:email]
+        #   duplicate_user = User.find_by_email(params[:user][:email])
+        #   unless duplicate_user.nil?
+        #     render json: { message: ['Duplicate email. A user already exists with that email address.'] }, status: 409
+        #     return
+        #   end
+        # end
         user = User.create(user_params)
         if user.save
           render json: { token: JsonWebToken.encode(sub: user.id) }, status: 200

@@ -25,6 +25,12 @@ module Api
         end
       end
 
+      def destroy
+        tip = Tip.find(params[:id])
+        tip.destroy
+        render json: { message: 'Successfuly removed' }
+      end
+
       def favorite
         if current_user.favorites.exists?(tip_id: params[:tip_id])
           render json: { message: 'Tip has already been added to favorites' }, status: :forbidden
