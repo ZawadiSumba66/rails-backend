@@ -21,8 +21,6 @@ gem 'puma', '~> 5.0'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'jwt'
-gem 'cloudinary'
-gem 'carrierwave'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
