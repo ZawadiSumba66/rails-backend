@@ -60,6 +60,22 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    aws-eventstream (1.2.0)
+    aws-partitions (1.524.0)
+    aws-sdk-core (3.121.6)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.520.1)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.50.0)
+      aws-sdk-core (~> 3, >= 3.121.2)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.104.0)
+      aws-sdk-core (~> 3, >= 3.121.2)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.4)
+    aws-sigv4 (1.4.0)
+      aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.16)
     bootsnap (1.7.7)
       msgpack (~> 1.0)
@@ -97,6 +113,7 @@ GEM
       activesupport (>= 5.0)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
+    jmespath (1.4.0)
     jwt (2.2.3)
     listen (3.6.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -108,6 +125,7 @@ GEM
       mini_mime (>= 0.1.1)
     marcel (1.0.1)
     method_source (1.0.0)
+    mini_magick (4.11.0)
     mini_mime (1.1.0)
     mini_portile2 (2.6.1)
     minitest (5.14.4)
@@ -200,6 +218,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk-s3
   bootsnap (>= 1.4.4)
   byebug
   database_cleaner (~> 2.0, >= 2.0.1)
@@ -209,6 +228,7 @@ DEPENDENCIES
   faker (~> 2.18)
   jwt
   listen (~> 3.3)
+  mini_magick (~> 4.11)
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors

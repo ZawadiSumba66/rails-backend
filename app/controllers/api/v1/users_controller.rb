@@ -19,9 +19,13 @@ module Api
         #     return
         #   end
         # end
-        user = User.create(user_params)
+        avatar = params[:user][:avatar]
+        params = user_params.except(:avatar)
+        user = User.create(params) 
+        user.avatar.attach(avatar) if avatar.present?
+        url = User.avatar_url(user.avatar)
         if user.save
-          render json: { token: JsonWebToken.encode(sub: user.id) }, status: 200
+          render json: { token: JsonWebToken.encode(sub: user.id), avatar_url: url }, status: 200
         else
           render json: { message: user.errors.full_messages }, status: 400
         end
@@ -29,8 +33,9 @@ module Api
 
       def show
         user = User.find(params[:id])
+        url = User.avatar_url(user.avatar)
         favorites = user.favorited_tips
-        response = { user: user, favorites: favorites }
+        response = { user: user, favorites: favorites, avatar_url: url }
         render json: response
       end
 
@@ -50,7 +55,7 @@ module Api
       private
 
       def user_params
-        params.require(:user).permit(:username, :email, :password, :password_confirmation)
+        params.require(:user).permit(:username, :email, :password, :password_confirmation, :avatar)
       end
     end
   end
