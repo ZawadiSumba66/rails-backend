@@ -20,6 +20,7 @@ This is a rails api for a fitness app where users actions are saved to the datab
 - Ruby 
 - Ruby on Rails
 - PostgreSQL
+- AWS
 
 ## Getting Started
 
