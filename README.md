@@ -14,6 +14,7 @@ This is a rails api for a fitness app where users actions are saved to the datab
 - Tips and Favourites can be seen only by authorized users
 - To authorize users, this app uses JWT and  Devise
 - For cross site policy Rack-cors was used  
+- User profile image storage using Amazon S3.
 
 ## Built With
 
