@@ -8,9 +8,13 @@ module Api
       end
 
       def create
-        tip = current_user.tips.create(tip_params)
+        image = params[:tip][:image]
+        params = tip_params.except(image)
+        tip = current_user.tips.create(params)
+        tip.image.attach(image) if image.present?
+        url = Tip.image_url(tip.image)
         if tip.save
-          render json: { tip: tip }, status: 200
+          render json: { tip: tip, tip_url: url }, status: 200
         else
           render json: { message: tip.errors.full_messages }, status: 400
         end
@@ -18,8 +22,9 @@ module Api
 
       def show
         tip = Tip.find(params[:id])
+        url = Tip.image_url(tip.image)
         if tip
-          render json: { tip: tip }, status: 200
+          render json: { tip: tip, tip_url: url  }, status: 200
         else
           render json: { message: 'No tip found' }, status: 400
         end
@@ -44,7 +49,7 @@ module Api
       private
 
       def tip_params
-        params.require(:tip).permit(:title, :description, :benefits, :instructions)
+        params.require(:tip).permit(:title, :description, :benefits, :instructions, :image)
       end
     end
   end
